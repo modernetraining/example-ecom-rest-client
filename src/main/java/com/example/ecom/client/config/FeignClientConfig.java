@@ -45,8 +45,7 @@ public class FeignClientConfig {
 
                 // 1. If we are already authenticated with a JWT (incoming request), propagate
                 // it
-                if (authentication instanceof JwtAuthenticationToken) {
-                    JwtAuthenticationToken jwtToken = (JwtAuthenticationToken) authentication;
+                if (authentication instanceof JwtAuthenticationToken jwtToken) {
                     template.header("Authorization", "Bearer " + jwtToken.getToken().getTokenValue());
                 }
                 // 2. If not (e.g. background task or startup), use Client Credentials flow
